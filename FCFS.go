@@ -71,12 +71,11 @@ func FCFS() {
 			for i, item := range processes {
 				finishingTime += item.executionTime
 				i = i
-				//fmt.Println(i, item.executionTime, item.arrivalTime, finishingTime)
 				turnaroundTime += finishingTime - item.arrivalTime
 				waitingTime += finishingTime - item.executionTime - item.arrivalTime
 			}
 			averageWaitingTime, averageTurnaroundTime = waitingTime/float64(len(processes)), turnaroundTime/float64(len(processes))
-			result := fmt.Sprintf("FCFS average WT and ATA: %0.3f, %0.3f", averageWaitingTime, averageTurnaroundTime)
+			result := fmt.Sprintf("FCFS average WT and TAT: %0.3f, %0.3f", averageWaitingTime, averageTurnaroundTime)
 			processChan <- result
 			close(processChan)
 			wg.Done()

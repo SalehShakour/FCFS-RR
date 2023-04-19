@@ -124,7 +124,7 @@ func RR() {
 			//fmt.Printf("RR average WT and ATA (quantum = %f):\n", quantum)
 			//
 			//fmt.Println(averageWaitingTime, averageTurnaroundTime)
-			result := fmt.Sprintf("RR average WT and ATA (quantum = %f): %0.3f, %0.3f", quantum, averageWaitingTime, averageTurnaroundTime)
+			result := fmt.Sprintf("RR average WT and TAT (quantum = %f): %0.3f, %0.3f", quantum, averageWaitingTime, averageTurnaroundTime)
 			processChan <- result
 			close(processChan)
 			wg.Done()
