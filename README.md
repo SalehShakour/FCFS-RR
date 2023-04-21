@@ -6,11 +6,17 @@ This is an implementation of the First-Come, First-Served (FCFS) and Round Robin
 
 ### FCFS
 
-The FCFS algorithm schedules processes in the order that they arrive. The implementation of the FCFS algorithm in this project assumes that all processes arrive at time 0.
+The FCFS algorithm is the simplest CPU scheduling algorithm. It schedules processes in the order in which they arrive in the ready queue. When the CPU becomes available, the process at the front of the queue is selected for execution and is removed from the queue. The execution continues until the process completes or blocks for I/O. Then, the next process in the queue is selected for execution.
+
+In FCFS, the waiting time for a process is simply the sum of the execution times of all the processes that arrived before it. The turnaround time is the sum of the waiting time and the execution time.
 
 ### RR
 
-The RR algorithm schedules processes in a round-robin fashion, giving each process a fixed time slice, or quantum, and then moving on to the next process. If a process does not complete in its time slice, it is moved to the end of the queue. 
+The RR algorithm is a preemptive scheduling algorithm that is designed for time-sharing systems. In RR, each process is assigned a fixed time slice, called a time quantum, and is scheduled for execution for that amount of time. After the time quantum expires, the process is preempted and moved to the back of the ready queue. The next process in the queue is then selected for execution, and the process continues until it completes or blocks for I/O.
+
+The RR algorithm allows each process to run for a short period of time, providing good response time for interactive applications. However, if the time quantum is too small, there can be a lot of context switching overhead, which can slow down the system.
+
+In RR, the waiting time for a process is the total time it spends in the ready queue before it gets to run. The turnaround time is the sum of the waiting time and the execution time. 
 
 ## How to Use
 
@@ -22,9 +28,7 @@ The RR algorithm schedules processes in a round-robin fashion, giving each proce
 6. Enter the details of each process as a string in the format `"process-name execution-time arrival-time"`. For example, `"P1 10 0"` represents a process named P1 with an execution time of 10 and an arrival time of 0.
 7. If you want to use the FCFS algorithm, comment out the call to the `RR()` function in the `main()` function of the `main.go` file.
 8. If you want to use the RR algorithm, comment out the call to the `FCFS()` function in the `main()` function of the `main.go` file.
-9. If you are using the RR algorithm, you can change the time slice by modifying the `quantum` variable in the `rrScheduling()` function of the `scheduler.go` file.
+9. If you are using the RR algorithm, you can change the time slice by modifying the `quantum` variable in the `RR()` function of the `RR.go` file.
 
-## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for more information.
 
